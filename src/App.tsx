@@ -8,6 +8,8 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loading-screen";
+import { auth } from "./firebase";
+import ProtectedRoute from "./components/protected-route";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -22,8 +24,12 @@ const GlobalStyles = createGlobalStyle`
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
-    // 홈, 프로필은 레이아웃 포함
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
+    // 홈, 프로필은 레이아웃 포함, 로그인으로부터 보호
     children: [
       {
         path: "",
@@ -48,7 +54,8 @@ const router = createBrowserRouter([
 function App() {
   const [isLoading, setLoading] = useState(true);
   const init = async () => {
-    // wait for firebase
+    await auth.authStateReady();
+    // wait for firebase 인증 준비
     setLoading(false);
     // setTimeout(() => setLoading(false), 2000);
   };
