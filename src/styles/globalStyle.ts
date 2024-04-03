@@ -3,13 +3,13 @@ import reset from "styled-reset";
 
 export const GlobalStyles = createGlobalStyle`
   ${reset};
-  *{
+  * {
     box-sizing: border-box;
   }
-  body{
+  body {
     display: flex;
     justify-content: center;
-    font-family : 'Pretendard';
+    font-family: 'Pretendard', sans-serif;
     background: var(--bg-Color);
   }
   /* 변수 */
@@ -24,7 +24,7 @@ export const GlobalStyles = createGlobalStyle`
     // 컬러칩
     --main-Color: #81282C;
     --main-Border_lite: #F2E9EA;
-    --main-Border_medium : #A7696B;
+    --main-Border_medium: #A7696B;
     --bg-Color: #F8F8E0;
     --box-Color: #FFFFF5;
     --dark-Color: #1C1C1C;
@@ -32,4 +32,17 @@ export const GlobalStyles = createGlobalStyle`
     --light-Color: #FFFFFF;
   }
 
+  @font-face {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/Pretendard-Medium.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: bold;
+    src: url("/Pretendard-Bold.woff") format("woff");
+  }
 `;
