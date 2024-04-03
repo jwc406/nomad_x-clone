@@ -24,8 +24,8 @@ export const GlobalStyles = createGlobalStyle`
     --main-Border_medium : #A7696B;
     --bg-Color: #F8F8E0;
     --box-Color: #FFFFF5;
-    --base-Color: #1C1C1C;
-    --base-Border: #DCDCDC;
+    --dark-Color: #1C1C1C;
+    --dark-Border: #DCDCDC;
     --light-Color: #FFFFFF;
   }
 

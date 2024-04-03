@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./routes/Home";
 import Profile from "./routes/Profile";
-import CreateAcount from "./routes/create-account";
 import Login from "./routes/Login";
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loading-screen";
 import { auth } from "./firebase";
 import ProtectedRoute from "./components/protected-route";
 import { GlobalStyles } from "./styles/globalStyle";
+import Signin from "./routes/Signin";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/create-account",
-    element: <CreateAcount />,
+    element: <Signin />,
   },
 ]);
 

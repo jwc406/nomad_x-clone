@@ -1,81 +1,114 @@
-import { useState } from "react";
-import { auth } from "../firebase";
-import { Link, useNavigate } from "react-router-dom";
-import { FirebaseError } from "firebase/app";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import {
-  Error,
-  Form,
-  Input,
-  Switcher,
-  Title,
-  Wrapper,
-} from "../styles/auth-components";
+import styled from "styled-components";
 import GithubButton from "../components/github-btn";
 import GoogleButton from "../components/google-btn";
+import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
-export default function CreateAccount() {
+export default function Login() {
   const navigate = useNavigate();
-  const [isLoading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { name, value },
-    } = e;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
+  const onClickSigninModal = () => {
+    navigate("/create-account");
   };
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError("");
-    if (isLoading || email === "" || password === "") return;
-    try {
-      setLoading(true);
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
-    } catch (e) {
-      if (e instanceof FirebaseError) {
-        setError(e.message);
-      }
-    } finally {
-      setLoading(false);
-    }
+  const onClickLoginModal = () => {
+    navigate("/login");
   };
+
   return (
     <Wrapper>
-      <Title>Log into 𝕏</Title>
-      <Form onSubmit={onSubmit}>
-        <Input
-          onChange={onChange}
-          name="email"
-          value={email}
-          placeholder="Email"
-          type="email"
-          required
-        />
-        <Input
-          onChange={onChange}
-          value={password}
-          name="password"
-          placeholder="Password"
-          type="password"
-          required
-        />
-        <Input type="submit" value={isLoading ? "Loading..." : "Log in"} />
-      </Form>
-      {error !== "" ? <Error>{error}</Error> : null}
-      <Switcher>
-        Don't have an account?{" "}
-        <Link to="/create-account">Create one &rarr;</Link>
-      </Switcher>
-      <GithubButton />
-      <GoogleButton />
+      <Title>
+        <h1>지금 일어나고 있는 일</h1>
+        <h2>지금 가입하세요!</h2>
+      </Title>
+      <section>
+        <ChoiceBox>
+          <GithubButton />
+          <GoogleButton />
+          <Divider>
+            <div></div>
+            <p>또는</p>
+            <div></div>
+          </Divider>
+          <Button onClick={onClickSigninModal} sort="base" size="XL">
+            계정 만들기
+          </Button>
+          <p style={{ color: "var(--main-Color)" }}>
+            가입하시려면 <Strong>쿠키 사용</Strong>을 포함해{" "}
+            <Strong>이용약관</Strong>과 <Strong>개인정보 처리방침</Strong>에
+            동의해야 합니다.
+          </p>
+        </ChoiceBox>
+        <LoginBox>
+          <p>이미 X에 가입하셨나요?</p>
+          <Button onClick={onClickLoginModal} sort="lite" size="XL">
+            로그인
+          </Button>
+        </LoginBox>
+      </section>
       {/* 비밀번호 잊었을 때 재설정 -> sendPasswordResetEmail */}
     </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 415px;
+    min-height: 520px;
+  }
+`;
+
+const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  color: var(--main-Color);
+  font-weight: 700;
+  h1 {
+    font-size: 62px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+`;
+
+const ChoiceBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 50px;
+`;
+
+const LoginBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  p {
+    font-size: var(--main-Size);
+    color: var(--main-Color);
+    font-weight: 700;
+  }
+`;
+
+const Divider = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  div {
+    flex: 1;
+    height: 1px;
+    background: var(--main-Border_lite);
+  }
+  p {
+    color: var(--main-Color);
+  }
+`;
+
+const Strong = styled.strong`
+  font-weight: 700;
+`;

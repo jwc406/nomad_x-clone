@@ -1,14 +1,14 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import { Input, Title, Wrapper, Error, Form } from "../styles/auth-components";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+import { Error, Input, Switcher } from "../../styles/auth-components";
+import Button from "../../components/Button";
 
-export default function CreateAccount() {
+export default function LoginModal() {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,9 +16,7 @@ export default function CreateAccount() {
     const {
       target: { name, value },
     } = e;
-    if (name === "name") {
-      setName(value);
-    } else if (name === "email") {
+    if (name === "email") {
       setEmail(value);
     } else if (name === "password") {
       setPassword(value);
@@ -27,40 +25,22 @@ export default function CreateAccount() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
-    if (isLoading || name === "" || email === "" || password === "") return;
+    if (isLoading || email === "" || password === "") return;
     try {
       setLoading(true);
-      const credentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(credentials.user);
-      await updateProfile(credentials.user, {
-        displayName: name,
-      });
+      await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
     } catch (e) {
       if (e instanceof FirebaseError) {
         setError(e.message);
       }
-      // setError
     } finally {
       setLoading(false);
     }
   };
   return (
-    <Wrapper>
-      <Title>계정을 생성하세요</Title>
+    <>
       <Form onSubmit={onSubmit}>
-        <Input
-          onChange={onChange}
-          name="name"
-          value={name}
-          placeholder="Name"
-          type="text"
-          required
-        />
         <Input
           onChange={onChange}
           name="email"
@@ -77,12 +57,13 @@ export default function CreateAccount() {
           type="password"
           required
         />
-        <Input
-          type="submit"
-          value={isLoading ? "Loading..." : "Create Account"}
-        />
+        <Button type="submit" value={isLoading ? "Loading..." : "로그인"} />
       </Form>
       {error !== "" ? <Error>{error}</Error> : null}
-    </Wrapper>
+      <Switcher>
+        Don't have an account?{" "}
+        <Link to="/create-account">Create one &rarr;</Link>
+      </Switcher>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import Button from "../components/Button";
 
 export default function Home() {
   const navigate = useNavigate(); // useNavigate 훅 사용
@@ -9,9 +10,10 @@ export default function Home() {
     // 로그아웃 후 바로 이동하기 위해 navigate 함수 사용
     navigate("/login");
   };
+
   return (
     <div>
-      <button onClick={logOut}>logout</button>
+      <Button onClick={logOut}>나는 칠드런</Button>
     </div>
   );
 }
