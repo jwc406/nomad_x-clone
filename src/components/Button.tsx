@@ -68,27 +68,27 @@ const ConditionalStyle = css`
     switch (size) {
       case "XL":
         return css`
-          width: 415px;
-          height: 60px;
-          font-size: var(--main-Size);
+          width: 300px;
+          height: 40px;
+          font-size: var(--basic-Size);
         `;
       case "L":
         return css`
-          width: 275px;
-          height: 60px;
-          font-size: var(--main-Size);
+          width: 180px;
+          height: 40px;
+          font-size: var(--basic-Size);
         `;
       case "M":
         return css`
-          width: 120px;
-          height: 40px;
-          font-size: var(--main-Size);
+          width: 80px;
+          height: 30px;
+          font-size: var(--basic-Size);
         `;
       case "S":
         return css`
-          width: 75px;
-          height: 30px;
-          font-size: var(--basic-Size);
+          width: 50px;
+          height: 20px;
+          font-size: var(--lite-Size);
         `;
       default:
         return css``;

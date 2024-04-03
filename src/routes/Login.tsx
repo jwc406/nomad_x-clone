@@ -15,41 +15,57 @@ export default function Login() {
 
   return (
     <Wrapper>
-      <Title>
-        <h1>지금 일어나고 있는 일</h1>
-        <h2>지금 가입하세요!</h2>
-      </Title>
-      <section>
-        <ChoiceBox>
-          <GithubButton />
-          <GoogleButton />
-          <Divider>
-            <div></div>
-            <p>또는</p>
-            <div></div>
-          </Divider>
-          <Button onClick={onClickSigninModal} sort="base" size="XL">
-            계정 만들기
-          </Button>
-          <p style={{ color: "var(--main-Color)" }}>
-            가입하시려면 <Strong>쿠키 사용</Strong>을 포함해{" "}
-            <Strong>이용약관</Strong>과 <Strong>개인정보 처리방침</Strong>에
-            동의해야 합니다.
-          </p>
-        </ChoiceBox>
-        <LoginBox>
-          <p>이미 X에 가입하셨나요?</p>
-          <Button onClick={onClickLoginModal} sort="lite" size="XL">
-            로그인
-          </Button>
-        </LoginBox>
-      </section>
-      {/* 비밀번호 잊었을 때 재설정 -> sendPasswordResetEmail */}
+      <img src="/logo-main.png" alt="" />
+      <Main>
+        <Title>
+          <h1>지금 일어나고 있는 일</h1>
+          <h2>지금 가입하세요!</h2>
+        </Title>
+        <section>
+          <ChoiceBox>
+            <GithubButton />
+            <GoogleButton />
+            <Divider>
+              <div></div>
+              <p>또는</p>
+              <div></div>
+            </Divider>
+            <Button onClick={onClickSigninModal} sort="base" size="XL">
+              계정 만들기
+            </Button>
+            <p
+              style={{
+                color: "var(--main-Color)",
+                fontSize: "var(--lite-Size)",
+              }}
+            >
+              가입하시려면 <Strong>쿠키 사용</Strong>을 포함해{" "}
+              <Strong>이용약관</Strong>과 <Strong>개인정보 처리방침</Strong>에
+              동의해야 합니다.
+            </p>
+          </ChoiceBox>
+          <LoginBox>
+            <p>이미 X에 가입하셨나요?</p>
+            <Button onClick={onClickLoginModal} sort="lite" size="XL">
+              로그인
+            </Button>
+          </LoginBox>
+        </section>
+        {/* 비밀번호 잊었을 때 재설정 -> sendPasswordResetEmail */}
+      </Main>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+  display: flex;
+  max-width: 1440px;
+  height: 100vh;
+  gap: 100px;
+  align-items: center;
+`;
+
+const Main = styled.main`
   display: flex;
   flex-direction: column;
 
@@ -57,8 +73,8 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 415px;
-    min-height: 520px;
+    min-height: 400px;
+    max-width: 300px;
   }
 `;
 

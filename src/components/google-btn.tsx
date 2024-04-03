@@ -6,6 +6,7 @@ import Button from "./Button";
 
 const Logo = styled.img`
   height: 25px;
+  margin-right: 10px;
 `;
 
 export default function GoogleButton() {
@@ -22,7 +23,7 @@ export default function GoogleButton() {
   return (
     <Button onClick={onClick} sort="social" size="XL">
       <Logo src="/google-logo.svg" />
-      Continue with Google
+      Google 계정으로 가입하기
     </Button>
   );
 }

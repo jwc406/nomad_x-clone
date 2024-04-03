@@ -7,7 +7,10 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   body{
+    display: flex;
+    justify-content: center;
     font-family : 'Pretendard';
+    background: var(--bg-Color);
   }
   /* 변수 */
   :root {
