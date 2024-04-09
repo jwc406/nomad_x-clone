@@ -32,7 +32,7 @@ const ModalContent = styled.div`
   position: relative;
   background: var(--box-Color);
   width: 500px;
-  min-height: 500px;
+  min-height: 600px;
   border-radius: 30px;
   display: flex;
   flex-direction: column;

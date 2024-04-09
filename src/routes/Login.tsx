@@ -132,6 +132,6 @@ export const Divider = styled.div`
   }
 `;
 
-const Strong = styled.strong`
+export const Strong = styled.strong`
   font-weight: 700;
 `;

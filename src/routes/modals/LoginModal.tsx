@@ -1,14 +1,14 @@
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import Button from "../../components/Button";
-import { auth } from "../../firebase";
-import { Error, Input, Switcher } from "../../styles/auth-components";
-import { LoginModalChoiceBox, Divider } from "../Login";
 import GithubButton from "../../components/github-btn";
 import GoogleButton from "../../components/google-btn";
-import styled from "styled-components";
+import { auth } from "../../firebase";
+import { Form, Error, Input, Switcher } from "../../styles/auth-components";
+import { Divider, LoginModalChoiceBox } from "../Login";
 
 export default function LoginModal() {
   const navigate = useNavigate();
@@ -71,12 +71,20 @@ export default function LoginModal() {
           type="password"
           required
         />
-        <Button type="submit" value={isLoading ? "Loading..." : "로그인"} />
+        <Button
+          type="submit"
+          sort="base"
+          size="XL"
+          value={isLoading ? "Loading..." : "로그인"}
+        />
+        <Button sort="lite" size="XL">
+          비밀번호를 잊으셨나요?
+        </Button>
       </Form>
       {error !== "" ? <Error>{error}</Error> : null}
       <Switcher>
-        Don't have an account?{" "}
-        <Link to="/create-account">Create one &rarr;</Link>
+        계정이 없으신가요?
+        <Link to="/create-account"> 가입하기</Link>
       </Switcher>
     </Wrapper>
   );

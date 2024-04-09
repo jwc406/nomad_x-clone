@@ -20,36 +20,33 @@ export const Title = styled.div`
 `;
 
 export const Form = styled.form`
-  margin-top: 50px;
-  margin-bottom: 10px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
-  width: 100%;
+  width: 300px;
 `;
 
 export const Input = styled.input`
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: none;
   width: 100%;
-  font-size: 16px;
-  &[type="submit"] {
-    cursor: pointer;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
+  height: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid 1px var(--main-Border_lite);
 `;
 
 export const Error = styled.span`
   font-weight: 600;
   color: tomato;
+  margin-top: 10px;
 `;
 
 export const Switcher = styled.span`
-  margin-top: 20px;
+  margin: 30px 0;
   a {
-    color: #1d9bf0;
+    color: var(--main-Color);
+    font-weight: 700;
+    text-decoration: none;
   }
 `;

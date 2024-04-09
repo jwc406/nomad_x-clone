@@ -3,7 +3,9 @@ import { useState } from "react";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import { Input, Title, Wrapper, Error, Form } from "../styles/auth-components";
+import { Input, Title, Error, Form } from "../styles/auth-components";
+import styled from "styled-components";
+import Button from "../components/Button";
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -51,38 +53,63 @@ export default function Signin() {
   };
   return (
     <Wrapper>
-      <Title>계정을 생성하세요</Title>
-      <Form onSubmit={onSubmit}>
-        <Input
-          onChange={onChange}
-          name="name"
-          value={name}
-          placeholder="Name"
-          type="text"
-          required
-        />
-        <Input
-          onChange={onChange}
-          name="email"
-          value={email}
-          placeholder="Email"
-          type="email"
-          required
-        />
-        <Input
-          onChange={onChange}
-          value={password}
-          name="password"
-          placeholder="Password"
-          type="password"
-          required
-        />
-        <Input
-          type="submit"
-          value={isLoading ? "Loading..." : "Create Account"}
-        />
-      </Form>
-      {error !== "" ? <Error>{error}</Error> : null}
+      <section>
+        <h1>계정 생성하기</h1>
+        <Form onSubmit={onSubmit}>
+          <img src="src\assets\imgs\signin.png" width="200px" alt="" />
+          <Input
+            onChange={onChange}
+            name="name"
+            value={name}
+            placeholder="Name"
+            type="text"
+            required
+          />
+          <Input
+            onChange={onChange}
+            name="email"
+            value={email}
+            placeholder="Email"
+            type="email"
+            required
+          />
+          <Input
+            onChange={onChange}
+            value={password}
+            name="password"
+            placeholder="Password"
+            type="password"
+            required
+          />
+          <Button
+            type="submit"
+            sort="base"
+            size="XL"
+            value={isLoading ? "Loading..." : "생성하기"}
+          />
+        </Form>
+        {error !== "" ? <Error>{error}</Error> : null}
+      </section>
     </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100vh;
+
+  h1 {
+    font-size: var(--main-Size);
+    font-weight: 700;
+    margin-bottom: 20px;
+    width: 300px;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+`;
