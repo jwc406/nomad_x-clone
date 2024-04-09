@@ -1,13 +1,8 @@
 import { GithubAuthProvider, signInWithPopup } from "firebase/auth";
-import { styled } from "styled-components";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-
-const Logo = styled.img`
-  height: 25px;
-  margin-right: 10px;
-`;
+import { GithubIcon } from "./icon-components";
 
 export default function GithubButton() {
   const navigate = useNavigate();
@@ -22,7 +17,7 @@ export default function GithubButton() {
   };
   return (
     <Button onClick={onClick} sort="social" size="XL">
-      <Logo src="/github-logo.svg" />
+      <GithubIcon />
       Github 계정으로 가입하기
     </Button>
   );

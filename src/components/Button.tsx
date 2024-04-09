@@ -29,6 +29,10 @@ const BaseStyle = css`
   align-items: center;
   border-radius: 30px;
   cursor: pointer;
+
+  svg {
+    margin-right: 5px;
+  }
 `;
 
 const ConditionalStyle = css`

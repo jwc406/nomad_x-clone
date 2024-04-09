@@ -1,13 +1,8 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { styled } from "styled-components";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-
-const Logo = styled.img`
-  height: 25px;
-  margin-right: 10px;
-`;
+import { GoogleIcon } from "./icon-components";
 
 export default function GoogleButton() {
   const navigate = useNavigate();
@@ -22,7 +17,7 @@ export default function GoogleButton() {
   };
   return (
     <Button onClick={onClick} sort="social" size="XL">
-      <Logo src="/google-logo.svg" />
+      <GoogleIcon />
       Google 계정으로 가입하기
     </Button>
   );

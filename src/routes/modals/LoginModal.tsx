@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { Form, Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { Form, Link, useNavigate } from "react-router-dom";
+import Button from "../../components/Button";
 import { auth } from "../../firebase";
 import { Error, Input, Switcher } from "../../styles/auth-components";
-import Button from "../../components/Button";
+import { LoginModalChoiceBox, Divider } from "../Login";
+import GithubButton from "../../components/github-btn";
+import GoogleButton from "../../components/google-btn";
+import styled from "styled-components";
 
 export default function LoginModal() {
   const navigate = useNavigate();
@@ -39,7 +43,17 @@ export default function LoginModal() {
     }
   };
   return (
-    <>
+    <Wrapper>
+      <h1>로그인</h1>
+      <LoginModalChoiceBox>
+        <GithubButton />
+        <GoogleButton />
+        <Divider>
+          <div></div>
+          <p>또는</p>
+          <div></div>
+        </Divider>
+      </LoginModalChoiceBox>
       <Form onSubmit={onSubmit}>
         <Input
           onChange={onChange}
@@ -64,6 +78,20 @@ export default function LoginModal() {
         Don't have an account?{" "}
         <Link to="/create-account">Create one &rarr;</Link>
       </Switcher>
-    </>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+
+  h1 {
+    font-size: var(--main-Size);
+    font-weight: 700;
+    margin-bottom: 20px;
+    width: 300px;
+  }
+`;

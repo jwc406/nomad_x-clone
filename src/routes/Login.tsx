@@ -3,19 +3,19 @@ import GithubButton from "../components/github-btn";
 import GoogleButton from "../components/google-btn";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import { Modal, useModal } from "../hooks/useModal";
+import LoginModal from "./modals/LoginModal";
 
 export default function Login() {
   const navigate = useNavigate();
   const onClickSigninModal = () => {
     navigate("/create-account");
   };
-  const onClickLoginModal = () => {
-    navigate("/login");
-  };
+  const [loginModal, openLoginModal, closeLoginModal] = useModal();
 
   return (
     <Wrapper>
-      <img src="/logo-main.png" alt="" />
+      <img src="src\assets\imgs\logo-main.png" alt="" />
       <Main>
         <Title>
           <h1>지금 일어나고 있는 일</h1>
@@ -46,12 +46,15 @@ export default function Login() {
           </ChoiceBox>
           <LoginBox>
             <p>이미 X에 가입하셨나요?</p>
-            <Button onClick={onClickLoginModal} sort="lite" size="XL">
+            <Button onClick={openLoginModal} sort="lite" size="XL">
               로그인
             </Button>
           </LoginBox>
         </section>
         {/* 비밀번호 잊었을 때 재설정 -> sendPasswordResetEmail */}
+        <Modal isOpen={loginModal} closeModal={closeLoginModal}>
+          <LoginModal />
+        </Modal>
       </Main>
     </Wrapper>
   );
@@ -100,7 +103,11 @@ const ChoiceBox = styled.div`
   margin-top: 50px;
 `;
 
-const LoginBox = styled.div`
+export const LoginModalChoiceBox = styled(ChoiceBox)`
+  margin-top: 0px;
+`;
+
+export const LoginBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -111,7 +118,7 @@ const LoginBox = styled.div`
   }
 `;
 
-const Divider = styled.div`
+export const Divider = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;

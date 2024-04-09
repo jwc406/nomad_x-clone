@@ -36,13 +36,13 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Pretendard";
     font-style: normal;
     font-weight: normal;
-    src: url("/Pretendard-Medium.woff") format("woff");
+    src: url("src\assets\fonts\Pretendard-Medium.woff") format("woff");
   }
 
   @font-face {
     font-family: "Pretendard";
     font-style: normal;
     font-weight: bold;
-    src: url("/Pretendard-Bold.woff") format("woff");
+    src: url("src\assets\fonts\Pretendard-Bold.woff") format("woff");
   }
 `;

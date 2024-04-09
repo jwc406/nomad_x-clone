@@ -1,13 +1,13 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "./routes/Home";
-import Profile from "./routes/Profile";
-import Login from "./routes/Login";
 import { useEffect, useState } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import LoadingScreen from "./components/loading-screen";
-import { auth } from "./firebase";
 import ProtectedRoute from "./components/protected-route";
-import { GlobalStyles } from "./styles/globalStyle";
+import { auth } from "./firebase";
+import Home from "./routes/Home";
+import Login from "./routes/Login";
+import Profile from "./routes/Profile";
 import Signin from "./routes/Signin";
+import { GlobalStyles } from "./styles/globalStyle";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
