@@ -25,7 +25,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  width: 300px;
+  width: 350px;
 `;
 
 export const Input = styled.input`

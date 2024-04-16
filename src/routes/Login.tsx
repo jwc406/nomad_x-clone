@@ -23,8 +23,8 @@ export default function Login() {
         </Title>
         <section>
           <ChoiceBox>
-            <GithubButton />
-            <GoogleButton />
+            <GithubButton>Github 계정으로 가입하기</GithubButton>
+            <GoogleButton>Google 계정으로 가입하기</GoogleButton>
             <Divider>
               <div></div>
               <p>또는</p>
@@ -77,7 +77,7 @@ const Main = styled.main`
     flex-direction: column;
     justify-content: space-between;
     min-height: 400px;
-    max-width: 300px;
+    max-width: 350px;
   }
 `;
 

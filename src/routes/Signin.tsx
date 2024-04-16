@@ -98,14 +98,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 350px;
   height: 100vh;
 
   h1 {
     font-size: var(--main-Size);
     font-weight: 700;
     margin-bottom: 20px;
-    width: 300px;
+    width: 350px;
   }
 
   section {

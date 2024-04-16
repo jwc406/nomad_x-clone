@@ -30,6 +30,12 @@ export const GlobalStyles = createGlobalStyle`
     --dark-Color: #1C1C1C;
     --dark-Border: #DCDCDC;
     --light-Color: #FFFFFF;
+
+    // hover
+    --main_hover: #6C2326;
+    --social_hover: #EEEEEE;
+    --box_hover: #FFF8C6;
+    --dark_hover:#3B3B3B;
   }
 
   @font-face {

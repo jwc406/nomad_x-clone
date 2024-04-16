@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 import GithubButton from "../../components/github-btn";
 import GoogleButton from "../../components/google-btn";
 import { auth } from "../../firebase";
-import { Form, Error, Input, Switcher } from "../../styles/auth-components";
+import { Error, Form, Input, Switcher } from "../../styles/auth-components";
 import { Divider, LoginModalChoiceBox } from "../Login";
 
 export default function LoginModal() {
@@ -46,8 +46,8 @@ export default function LoginModal() {
     <Wrapper>
       <h1>로그인</h1>
       <LoginModalChoiceBox>
-        <GithubButton />
-        <GoogleButton />
+        <GithubButton>Github 계정으로 로그인하기</GithubButton>
+        <GoogleButton>Google 계정으로 로그인하기</GoogleButton>
         <Divider>
           <div></div>
           <p>또는</p>
@@ -94,12 +94,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 300px;
+  width: 350px;
 
   h1 {
     font-size: var(--main-Size);
     font-weight: 700;
     margin-bottom: 20px;
-    width: 300px;
+    width: 350px;
   }
 `;

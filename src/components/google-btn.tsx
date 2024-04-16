@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { GoogleIcon } from "./icon-components";
 
-export default function GoogleButton() {
+export default function GoogleButton({ children }: any) {
   const navigate = useNavigate();
   const onClick = async () => {
     try {
@@ -18,7 +18,7 @@ export default function GoogleButton() {
   return (
     <Button onClick={onClick} sort="social" size="XL">
       <GoogleIcon />
-      Google 계정으로 가입하기
+      {children}
     </Button>
   );
 }

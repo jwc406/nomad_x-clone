@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { GithubIcon } from "./icon-components";
 
-export default function GithubButton() {
+export default function GithubButton({ children }: any) {
   const navigate = useNavigate();
   const onClick = async () => {
     try {
@@ -18,7 +18,7 @@ export default function GithubButton() {
   return (
     <Button onClick={onClick} sort="social" size="XL">
       <GithubIcon />
-      Github 계정으로 가입하기
+      {children}
     </Button>
   );
 }
