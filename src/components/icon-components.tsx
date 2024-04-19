@@ -7,6 +7,7 @@ import List from "../assets/icons/list.svg?react";
 import Bell from "../assets/icons/bell.svg?react";
 import Massege from "../assets/icons/massege.svg?react";
 import Settings from "../assets/icons/settings.svg?react";
+import More from "../assets/icons/more.svg?react";
 
 export const GithubIcon = () => {
   return <Github />;
@@ -42,4 +43,8 @@ export const MassegeIcon = () => {
 
 export const SettingsIcon = () => {
   return <Settings />;
+};
+
+export const MoreIcon = () => {
+  return <More />;
 };

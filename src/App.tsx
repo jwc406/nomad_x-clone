@@ -6,35 +6,31 @@ import { auth } from "./firebase";
 import Home from "./routes/Home";
 import Login from "./routes/Login";
 import Profile from "./routes/Profile";
-import Signin from "./routes/Signin";
 import { GlobalStyles } from "./styles/globalStyle";
+import Layout from "./components/layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <ProtectedRoute>
-        <Home />
+        <Layout />
       </ProtectedRoute>
     ),
     children: [
       {
+        path: "",
+        element: <Home />,
+      },
+      {
         path: "/profile",
-        element: (
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        ),
+        element: <Profile />,
       },
     ],
   },
   {
     path: "/login",
     element: <Login />,
-  },
-  {
-    path: "/create-account",
-    element: <Signin />,
   },
 ]);
 
