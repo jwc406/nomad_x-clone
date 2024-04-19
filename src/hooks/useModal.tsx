@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { CloseIcon } from "../components/icon-components";
+import ReactDOM from "react-dom";
 
 export const useModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +66,7 @@ export const Modal = ({ isOpen, closeModal, children }: any) => {
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <>
       {isOpen && (
         <ModalOverlay onClick={handleOutsideClick}>
@@ -80,6 +81,7 @@ export const Modal = ({ isOpen, closeModal, children }: any) => {
           </ModalContent>
         </ModalOverlay>
       )}
-    </>
+    </>,
+    document.getElementById("modal-root")
   );
 };

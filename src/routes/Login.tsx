@@ -2,16 +2,13 @@ import styled from "styled-components";
 import GithubButton from "../components/github-btn";
 import GoogleButton from "../components/google-btn";
 import Button from "../components/Button";
-import { useNavigate } from "react-router-dom";
 import { Modal, useModal } from "../hooks/useModal";
 import LoginModal from "./modals/LoginModal";
+import SigninModal from "./modals/SigninModal";
 
 export default function Login() {
-  const navigate = useNavigate();
-  const onClickSigninModal = () => {
-    navigate("/create-account");
-  };
   const [loginModal, openLoginModal, closeLoginModal] = useModal();
+  const [signinModal, openSigninModal, closeSigninModal] = useModal();
 
   return (
     <Wrapper>
@@ -30,7 +27,7 @@ export default function Login() {
               <p>또는</p>
               <div></div>
             </Divider>
-            <Button onClick={onClickSigninModal} sort="base" size="XL">
+            <Button onClick={openSigninModal} sort="base" size="XL">
               계정 만들기
             </Button>
             <p
@@ -54,6 +51,9 @@ export default function Login() {
         {/* 비밀번호 잊었을 때 재설정 -> sendPasswordResetEmail */}
         <Modal isOpen={loginModal} closeModal={closeLoginModal}>
           <LoginModal />
+        </Modal>
+        <Modal isOpen={signinModal} closeModal={closeSigninModal}>
+          <SigninModal />
         </Modal>
       </Main>
     </Wrapper>
