@@ -1,25 +1,52 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../components/Button";
-import { auth } from "../firebase";
 import styled from "styled-components";
+import PostTweetForm from "../components/post-tweet-form";
+import MainSidebar from "../components/main-sidebar";
 
 export default function Home() {
-  const navigate = useNavigate(); // useNavigate 훅 사용
-
-  const logOut = () => {
-    auth.signOut();
-    // 로그아웃 후 바로 이동하기 위해 navigate 함수 사용
-    navigate("/login");
-  };
-
   return (
-    <Main>
-      <Button onClick={logOut}>나는 칠드런</Button>
-    </Main>
+    <Wrapper>
+      <Main>
+        <Header>
+          <button>추천</button>
+          <button>팔로우 중</button>
+        </Header>
+        <PostTweetForm />
+      </Main>
+      <MainSidebar />
+    </Wrapper>
   );
 }
 
-const Main = styled.main`
-  background: blue;
+const Wrapper = styled.div`
+  padding: 30px 0;
+  display: flex;
+  gap: 20px;
+  /* background: gray; */
   width: 1000px;
+`;
+
+const Main = styled.main`
+  flex: 2;
+  position: relative;
+  background: var(--box-Color);
+  border-radius: 20px;
+  padding-top: 50px;
+  overflow: hidden;
+`;
+const Header = styled.header`
+  display: flex;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  border-bottom: 1px solid var(--main-Border_lite);
+  button {
+    flex: 1;
+    border: none;
+    background: none;
+    cursor: pointer;
+    &:hover {
+      background: var(--lite_hover);
+    }
+  }
 `;

@@ -8,6 +8,8 @@ import Bell from "../assets/icons/bell.svg?react";
 import Massege from "../assets/icons/massege.svg?react";
 import Settings from "../assets/icons/settings.svg?react";
 import More from "../assets/icons/more.svg?react";
+import Photo from "../assets/icons/photo.svg?react";
+import GIF from "../assets/icons/gif.svg?react";
 
 export const GithubIcon = () => {
   return <Github />;
@@ -47,4 +49,12 @@ export const SettingsIcon = () => {
 
 export const MoreIcon = () => {
   return <More />;
+};
+
+export const PhotoIcon = () => {
+  return <Photo />;
+};
+
+export const GIFIcon = () => {
+  return <GIF />;
 };

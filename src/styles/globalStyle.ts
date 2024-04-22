@@ -12,6 +12,9 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Pretendard', sans-serif;
     background: var(--bg-Color);
   }
+  button{
+  transition: 0.2s;
+  }
   /* 변수 */
   :root {
     // 폰트 사이즈
@@ -33,9 +36,11 @@ export const GlobalStyles = createGlobalStyle`
 
     // hover
     --main_hover: #6C2326;
+    --main-lite_hover: #DEC7C8;
     --social_hover: #EEEEEE;
     --box_hover: #FFF8C6;
     --dark_hover:#3B3B3B;
+    --lite_hover:#efefef;
   }
 
   @font-face {

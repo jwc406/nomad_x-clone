@@ -28,7 +28,6 @@ const BaseStyle = css`
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  transition: 0.2s;
   cursor: pointer;
   svg {
     margin-right: 5px;
@@ -44,7 +43,6 @@ const ConditionalStyle = css`
           border: solid 1px var(--main-Color);
           background: var(--main-Color);
           color: var(--light-Color);
-
           &:hover {
             background: var(--main_hover);
           }
@@ -54,7 +52,6 @@ const ConditionalStyle = css`
           border: solid 1px var(--main-Border_lite);
           background: var(--box-Color);
           color: var(--main-Color);
-
           &:hover {
             background: var(--social_hover);
           }
@@ -64,7 +61,6 @@ const ConditionalStyle = css`
           border: solid 1px var(--main-Border_medium);
           background: var(--box-Color);
           color: var(--main-Color);
-
           &:hover {
             background: var(--box_hover);
           }
@@ -74,7 +70,6 @@ const ConditionalStyle = css`
           border: solid 1px var(--dark-Color);
           background: var(--dark-Color);
           color: var(--light-Color);
-
           &:hover {
             background: var(--dark_hover);
           }
@@ -100,7 +95,7 @@ const ConditionalStyle = css`
         `;
       case "M":
         return css`
-          width: 80px;
+          width: 100px;
           height: 30px;
           font-size: var(--basic-Size);
         `;
